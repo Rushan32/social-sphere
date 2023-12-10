@@ -67,6 +67,16 @@ form {
   }
 }
 
+.login-tag {
+  color: cornflowerblue;
+  text-decoration: none; // Remove the default underline
+  transition: text-decoration 0.3s ease; // Add a smooth transition effect
+
+  &:hover {
+    text-decoration: underline; // Apply underline on hover
+  }
+}
+
 @media screen and (max-width: 800px) {
   .container-r {
     width: 100%;
@@ -78,4 +88,6 @@ form {
     width: 100%;
     justify-content: center; /* Center content horizontally */
   }
+
+
 }

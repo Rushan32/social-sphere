@@ -51,6 +51,16 @@ form {
   margin-top: -1vw;
 }
 
+.register-tag {
+  color: cornflowerblue;
+  text-decoration: none; // Remove the default underline
+  transition: text-decoration 0.3s ease; // Add a smooth transition effect
+
+  &:hover {
+    text-decoration: underline; // Apply underline on hover
+  }
+}
+
 @media screen and (max-width: 1200px) {
   h1 {
     font-size: 5vw;
