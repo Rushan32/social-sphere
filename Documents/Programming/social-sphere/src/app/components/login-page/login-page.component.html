@@ -1,41 +1,140 @@
-<form [formGroup]="loginForm">
-  <p-card header="Login" [style]="{width: '360px'}">
-    <div class="field">
-      <label>Email</label>
-      <input type="text"
-             pInputText
-             formControlName="email"
-             class="w-full"
-             name="email"
-             placeholder="Type your email"
-      />
-      <small *ngIf="email.invalid && (email.dirty || email.touched)"
-             class="block p-error"
-      >
-        <div *ngIf="email.errors?.['required']">Email is required</div>
-        <div *ngIf="email.errors?.['email']">Email must be valid</div>
-      </small>
+<style>
+  .container-r {
+    width: 50%;
+    max-width: 50%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-left: 50px;
+  }
+
+  .content-container {
+    font-weight: 900;
+    margin-top: 30px;
+    color: white;
+    margin-left: 50px;
+  }
+
+  .container-l {
+    max-width: 50%;
+    width: 50%;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+  }
+
+  .satellite-image {
+    max-width: 100%; /* Make the image responsive */
+    max-height: 100%; /* Make the image responsive */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    filter: grayscale(100%) invert(100%);
+    object-fit: contain; /* Adjust to cover the container without stretching */
+  }
+
+  h1 {
+    font-size: 4vw;
+    font-weight: 900;
+    margin-top: 2vw;
+  }
+
+  h2 {
+    font-size: 2vw;
+    margin-top: 2vw;
+    font-weight: 900;
+  }
+
+  form {
+    margin-top: -1vw;
+  }
+
+  @media screen and (max-width: 1200px) {
+    h1 {
+      font-size: 5vw;
+      margin-top: 2.5vw;
+    }
+
+    h2 {
+      font-size: 2.5vw;
+      margin-top: 2.5vw;
+    }
+
+    form {
+      margin-top: -1.5vw;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .container-r {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .container-l {
+      max-width: 100%; /* Adjust the max-width for smaller screens */
+      width: 100%;
+      justify-content: center; /* Center content horizontally */
+    }
+  }
+</style>
+
+
+<div style="height: 100vh; display: flex">
+  <div class="container-l">
+    <img src="../../../assets/Satellite.png" alt="Satellite Image" class="satellite-image">
+  </div>
+  <div class="container-r">
+    <div class="content-container">
+      <h1>In The Moment</h1>
+      <h2>Join SocialSphere Today...</h2>
+      <form [formGroup]="loginForm">
+        <p-card header="Login" [style]="{width: '80%', 'background-color': '#000000', 'color': '#ffffff'}">
+          <div class="field">
+            <label>Email</label>
+            <input type="text"
+                   pInputText
+                   formControlName="email"
+                   class="w-full"
+                   name="email"
+                   placeholder="Type your email"
+            />
+
+            <small *ngIf="email.invalid && (email.dirty || email.touched)"
+                   class="block p-error"
+            >
+              <div *ngIf="email.errors?.['required']">Email is required</div>
+              <div *ngIf="email.errors?.['email']">Email must be valid</div>
+            </small>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password"
+                   pInputText
+                   formControlName="password"
+                   class="w-full"
+                   name="password"
+                   placeholder="Type your password"
+            />
+
+            <small *ngIf="password.invalid && (password.dirty || password.touched)"
+                   class="block p-error"
+            >
+              <div *ngIf="password.errors?.['required']">Password is required</div>
+            </small>
+          </div>
+          <p-button label="Sign In"
+                    styleClass="w-full"
+                    [disabled]="loginForm.invalid"
+          >
+          </p-button>
+          <div class="m-2">Not a member? <a routerLink="/register">Register</a> </div>
+        </p-card>
+      </form>
     </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password"
-             pInputText
-             formControlName="password"
-             class="w-full"
-             name="password"
-             placeholder="Type your password"
-      />
-      <small *ngIf="password.invalid && (password.dirty || password.touched)"
-             class="block p-error"
-      >
-        <div *ngIf="password.errors?.['required']">Password is required</div>
-      </small>
-    </div>
-    <p-button label="Sign In"
-              styleClass="w-full"
-              [disabled]="loginForm.invalid"
-    >
-    </p-button>
-    <div class="m-2">Not a member? <a routerLink="/register">Register</a> </div>
-  </p-card>
-</form>
+  </div>
+</div>
+

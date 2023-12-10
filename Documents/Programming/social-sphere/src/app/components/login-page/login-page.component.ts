@@ -4,6 +4,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
+import {ImageModule} from "primeng/image";
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,8 @@ import {RouterLink} from "@angular/router";
     InputTextModule,
     ReactiveFormsModule,
     ButtonModule,
-    RouterLink
+    RouterLink,
+    ImageModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
@@ -22,7 +24,7 @@ export class LoginPageComponent {
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
-  });
+  })
   constructor(private fb: FormBuilder) {}
   get email() {
     return this.loginForm.controls['email'];
