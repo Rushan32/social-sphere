@@ -5,6 +5,9 @@ import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
 import {RouterLink} from "@angular/router";
 import {passwordMatchValidator} from "../../shared/password-match-directive";
+import {NgIf} from "@angular/common";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-register',
@@ -15,14 +18,17 @@ import {passwordMatchValidator} from "../../shared/password-match-directive";
     FormsModule,
     InputTextModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    NgIf,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   registerForm = this.fb.group({
-    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
+    fullName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
@@ -34,4 +40,5 @@ export class RegisterComponent {
   get email() {return this.registerForm.controls['email'];}
   get password() {return this.registerForm.controls['password']}
   get confirmPassword() {return this.registerForm.controls["confirmPassword"]}
+
 }

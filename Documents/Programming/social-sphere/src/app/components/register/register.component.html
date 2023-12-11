@@ -9,7 +9,7 @@
       <form [formGroup]="registerForm">
         <p-card header="Register" [style]="{width: '80%', 'background-color': '#000000', 'color': '#ffffff'}">
           <div class="field">
-            <label>Name</label>
+          <label>Name</label>
             <input type="text"
                    pInputText
                    formControlName="fullName"
@@ -22,26 +22,26 @@
                    class="block p-error"
             >
               <div *ngIf="fullName.errors?.['required']">Name is required</div>
-              <div *ngIf="fullName.errors?.['patterns']">Enter a valid name</div>
             </small>
           </div>
-          <div class="field">
-            <label>Email</label>
-            <input type="text"
-                   pInputText
-                   formControlName="email"
-                   class="w-full"
-                   name="email"
-                   placeholder="Type your email"
-            />
+            <div class="field">
+              <label>Email</label>
+              <input type="text"
+                     pInputText
+                     formControlName="email"
+                     class="w-full"
+                     name="email"
+                     placeholder="Type your email"
+              />
 
-            <small *ngIf="email.invalid && (email.dirty || email.touched)"
-                   class="block p-error"
-            >
-              <div *ngIf="email.errors?.['required']">Email is required</div>
-              <div *ngIf="email.errors?.['email']">Email must be valid</div>
-            </small>
-          </div>
+              <small *ngIf="email.invalid && (email.dirty || email.touched)"
+                     class="block p-error"
+              >
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Email must be valid</div>
+              </small>
+            </div>
+
           <div class="field">
             <label>Password</label>
             <input type="password"
@@ -83,7 +83,7 @@
                     [disabled]="registerForm.invalid"
           >
           </p-button>
-          <div class="m-2">Already a member? <a class="login-tag" routerLink="/login">Login</a> </div>
+          <div class="m-2">Already a member? <a class="login-tag" routerLink="/login">Login</a></div>
         </p-card>
       </form>
     </div>

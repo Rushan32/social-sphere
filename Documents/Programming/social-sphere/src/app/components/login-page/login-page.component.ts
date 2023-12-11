@@ -5,6 +5,7 @@ import {ButtonModule} from "primeng/button";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {ImageModule} from "primeng/image";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -16,7 +17,8 @@ import {ImageModule} from "primeng/image";
     ReactiveFormsModule,
     ButtonModule,
     RouterLink,
-    ImageModule
+    ImageModule,
+    NgIf
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
