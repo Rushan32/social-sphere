@@ -1,4 +1,4 @@
-.home-page {
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,3 +12,16 @@ h1 {
   font-size: 2rem; /* Adjust font size */
   margin-bottom: 20px; /* Add margin as needed */
 }
+
+mat-sidenav {
+  background-color: black;
+  color: white;
+  width: 230px;
+  height: 100%;
+}
+
+mat-sidenav-content {
+  height: 100vh;
+  background-color: darkolivegreen;
+}
+

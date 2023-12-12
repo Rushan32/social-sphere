@@ -4,13 +4,19 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../interfaces/auth";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {SidebarComponent} from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     ButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    SidebarComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
