@@ -1,1 +1,8 @@
-<p style="color: white">home works!</p>
+<div class="home-page">
+  <mat-sidenav-container class="sidebar-container"></mat-sidenav-container>
+
+
+
+  <h1>Welcome, {{ user?.fullName }}!</h1>
+  <p-button label="Sign Out" (onClick)="logOut()"></p-button>
+</div>
