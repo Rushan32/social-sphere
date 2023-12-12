@@ -1,18 +1,9 @@
 .container-r {
-  width: 50%;
-  max-width: 50%;
-  background-color: black;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
   color: white;
-  padding-left: 50px;
-}
-
-.content-container {
-  font-weight: 900;
-  margin-top: 30px;
-  color: white;
-  margin-left: 50px;
 }
 
 .container-l {
@@ -36,7 +27,7 @@
 }
 
 h1 {
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: 900;
   margin-top: 2vw;
 }
@@ -83,14 +74,30 @@ input {
 }
 
 @media screen and (max-width: 800px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+  }
   .container-r {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     max-width: 100%;
+    flex-grow: 11;
+    align-items: center;
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      font-size: 28px;
+    }
   }
 
   .container-l {
     max-width: 100%; /* Adjust the max-width for smaller screens */
-    width: 100%;
+    //width: 100%;
     justify-content: center; /* Center content horizontally */
+    flex-grow: 1;
   }
 }

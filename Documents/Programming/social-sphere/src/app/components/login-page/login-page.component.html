@@ -1,54 +1,53 @@
-<div style="height: 100vh; display: flex">
+<div class="login-container" style="height: 100vh; display: flex">
   <div class="container-l">
     <img src="../../../assets/Satellite.png" alt="Satellite Image" class="satellite-image">
   </div>
   <div class="container-r">
-    <div class="content-container">
-      <h1>In The Moment</h1>
-      <h2>Join SocialSphere Today...</h2>
-      <form [formGroup]="loginForm">
-        <p-card header="Login" [style]="{width: '80%', 'background-color': '#000000', 'color': '#ffffff'}">
-          <div class="field">
-            <label>Email</label>
-            <input type="text"
-                   pInputText
-                   formControlName="email"
-                   class="w-full"
-                   name="email"
-                   placeholder="Type your email"
-            />
+    <h1>In The Moment</h1>
+    <h2>Join SocialSphere Today...</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <p-card header="Login" [style]="{ 'background-color': '#000000', 'color': '#ffffff'}">
+        <div class="field">
+          <label>Email</label>
+          <input type="text"
+                 pInputText
+                 formControlName="email"
+                 class="w-full"
+                 name="email"
+                 placeholder="Type your email"
+          />
 
-            <small *ngIf="email.invalid && (email.dirty || email.touched)"
-                   class="block p-error"
-            >
-              <div *ngIf="email.errors?.['required']">Email is required</div>
-              <div *ngIf="email.errors?.['email']">Email must be valid</div>
-            </small>
-          </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password"
-                   pInputText
-                   formControlName="password"
-                   class="w-full"
-                   name="password"
-                   placeholder="Type your password"
-            />
-
-            <small *ngIf="password.invalid && (password.dirty || password.touched)"
-                   class="block p-error"
-            >
-              <div *ngIf="password.errors?.['required']">Password is required</div>
-            </small>
-          </div>
-          <p-button label="Sign In"
-                    styleClass="w-full"
-                    [disabled]="loginForm.invalid"
+          <small *ngIf="email.invalid && (email.dirty || email.touched)"
+                 class="block p-error"
           >
-          </p-button>
-          <div class="m-2">Not a member? <a class="register-tag" routerLink="/register">Register</a></div>
-        </p-card>
-      </form>
-    </div>
+            <div *ngIf="email.errors?.['required']">Email is required</div>
+            <div *ngIf="email.errors?.['email']">Email must be valid</div>
+          </small>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password"
+                 pInputText
+                 formControlName="password"
+                 class="w-full"
+                 name="password"
+                 placeholder="Type your password"
+          />
+
+          <small *ngIf="password.invalid && (password.dirty || password.touched)"
+                 class="block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">Password is required</div>
+          </small>
+        </div>
+        <p-button label="Sign In"
+                  styleClass="w-full"
+                  [disabled]="loginForm.invalid"
+                  type="submit"
+        >
+        </p-button>
+        <div class="m-2">Not a member? <a class="register-tag" routerLink="/register">Register</a></div>
+      </p-card>
+    </form>
   </div>
 </div>
