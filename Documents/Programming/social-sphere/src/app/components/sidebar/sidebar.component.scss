@@ -1,0 +1,8 @@
+.satellite-image {
+  max-width: 75%; /* Make the image responsive */
+  max-height: 75%; /* Make the image responsive */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  filter: grayscale(100%) invert(100%);
+  object-fit: contain; /* Adjust to cover the container without stretching */
+}
