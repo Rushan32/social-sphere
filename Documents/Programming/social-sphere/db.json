@@ -47,6 +47,12 @@
       "email": "rushan123@mailinator.com",
       "password": "32",
       "id": 8
+    },
+    {
+      "fullName": "lmao",
+      "email": "lmao@funny.com",
+      "password": "ha",
+      "id": 9
     }
   ]
 }

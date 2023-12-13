@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ButtonModule} from "primeng/button";
-import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
-import {User} from "../../interfaces/auth";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {SidebarComponent} from "../sidebar/sidebar.component";
+import { Component, OnInit } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../interfaces/auth';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-home',
@@ -16,15 +16,17 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    SidebarComponent
+    SidebarComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   user: User | null = null;
-  constructor(private router: Router,
-              private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
   logOut() {
     sessionStorage.clear();
     this.router.navigate(['login']);
@@ -39,6 +41,6 @@ export class HomeComponent implements OnInit{
       error => {
         console.error('Error retrieving user details:', error);
       }
-    )
+    );
   }
 }

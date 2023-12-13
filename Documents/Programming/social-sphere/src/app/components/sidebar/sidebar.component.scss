@@ -6,3 +6,15 @@
   filter: grayscale(100%) invert(100%);
   object-fit: contain; /* Adjust to cover the container without stretching */
 }
+
+.user {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 50px;
+  .profile-picture {
+    margin-top: 16px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+  }
+}
