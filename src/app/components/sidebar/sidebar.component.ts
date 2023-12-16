@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/auth';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })

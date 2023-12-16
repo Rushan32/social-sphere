@@ -22,7 +22,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  user: User | null = null;
+  user?: User;
   constructor(
     private router: Router,
     private authService: AuthService
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     const userEmail = sessionStorage.getItem('email');
     this.authService.getUserByEmail(userEmail as string).subscribe(
       users => {
-        this.user = users.length > 0 ? users[0] : null;
+        this.user = users[0];
       },
       error => {
         console.error('Error retrieving user details:', error);

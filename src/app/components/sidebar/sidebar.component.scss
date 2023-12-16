@@ -1,6 +1,14 @@
+.top {
+  display: flex;
+  align-items: start;
+  h2 {
+    margin-top: 30px;
+  }
+}
+
 .satellite-image {
-  max-width: 75%; /* Make the image responsive */
-  max-height: 75%; /* Make the image responsive */
+  max-width: 50%; /* Make the image responsive */
+  max-height: 50%; /* Make the image responsive */
   width: auto; /* Maintain aspect ratio */
   height: auto; /* Maintain aspect ratio */
   filter: grayscale(100%) invert(100%);
@@ -17,4 +25,96 @@
     height: 140px;
     border-radius: 50%;
   }
+  .name {
+  }
+  .mail {
+    margin-top: -16px;
+  }
 }
+
+button {
+  background-color: black;
+}
+
+.menu-items {
+  .menu-button {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 10px 20px; /* Adjust padding for better responsiveness */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Add a pointer cursor on hover for better usability */
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+    border: none;
+  }
+  .menu-icons {
+    max-width: 20%; /* Make the image responsive */
+    max-height: 20%; /* Make the image responsive */
+    filter: grayscale(100%) invert(100%);
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Adjust to cover the container without stretching */
+  }
+  .menu-button span {
+    color: white;
+    font-size: 20px;
+    margin-left: 15px;
+    position: relative;
+    top: 5px;
+  }
+  .menu-button:hover {
+    background-color: rgba(173, 216, 230, 0.5); /* Set the hover background color */
+
+  }
+}
+
+/* Add this CSS to your styles.css or styles.scss file */
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .satellite-image {
+    max-width: 30%; /* Make the image smaller on smaller screens */
+    max-height: 30%; /* Make the image smaller on smaller screens */
+  }
+
+  .user {
+    margin-bottom: 20px; /* Reduce margin on smaller screens */
+    .profile-picture {
+      width: 100px; /* Make the profile picture smaller on smaller screens */
+      height: 100px; /* Make the profile picture smaller on smaller screens */
+    }
+    .name {
+      font-size: 18px; /* Adjust font size on smaller screens */
+    }
+    .mail {
+      margin-top: -8px; /* Adjust margin on smaller screens */
+      font-size: 14px; /* Adjust font size on smaller screens */
+    }
+  }
+
+  .menu-items {
+    .menu-button {
+      padding: 8px 15px; /* Adjust padding for smaller screens */
+      font-size: 14px; /* Adjust font size on smaller screens */
+    }
+    .menu-icons {
+      max-width: 25%; /* Make the image slightly larger on smaller screens */
+      max-height: 25%; /* Make the image slightly larger on smaller screens */
+    }
+    .menu-button span {
+      font-size: 16px; /* Adjust font size on smaller screens */
+      top: 3px; /* Adjust position on smaller screens */
+    }
+  }
+}
+
