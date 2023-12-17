@@ -68,53 +68,10 @@ button {
   }
 }
 
-/* Add this CSS to your styles.css or styles.scss file */
-
 .navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-
-  .satellite-image {
-    max-width: 30%; /* Make the image smaller on smaller screens */
-    max-height: 30%; /* Make the image smaller on smaller screens */
-  }
-
-  .user {
-    margin-bottom: 20px; /* Reduce margin on smaller screens */
-    .profile-picture {
-      width: 100px; /* Make the profile picture smaller on smaller screens */
-      height: 100px; /* Make the profile picture smaller on smaller screens */
-    }
-    .name {
-      font-size: 18px; /* Adjust font size on smaller screens */
-    }
-    .mail {
-      margin-top: -8px; /* Adjust margin on smaller screens */
-      font-size: 14px; /* Adjust font size on smaller screens */
-    }
-  }
-
-  .menu-items {
-    .menu-button {
-      padding: 8px 15px; /* Adjust padding for smaller screens */
-      font-size: 14px; /* Adjust font size on smaller screens */
-    }
-    .menu-icons {
-      max-width: 25%; /* Make the image slightly larger on smaller screens */
-      max-height: 25%; /* Make the image slightly larger on smaller screens */
-    }
-    .menu-button span {
-      font-size: 16px; /* Adjust font size on smaller screens */
-      top: 3px; /* Adjust position on smaller screens */
-    }
-  }
 }
 

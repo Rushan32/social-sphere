@@ -4,10 +4,14 @@
       <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
+      <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+      <ng-container *ngIf="user$ | async as user">
+        <app-new-post></app-new-post>
+        <app-posts (postLiked)="onPostLike($event)" (zeetCommented)="onPostComment($event)" *ngFor="let post of allPosts;" [post]="post"></app-posts>
+      </ng-container>
     </mat-sidenav-content>
   </mat-sidenav-container>
   <div class="main">
-    <h1>Welcome, {{ user?.fullName }}!</h1>
     <p-button label="Sign Out" (onClick)="logOut()"></p-button>
   </div>
 </div>
