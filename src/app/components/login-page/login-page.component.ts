@@ -24,48 +24,6 @@ import { MessageService } from 'primeng/api';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
 })
-// export class LoginPageComponent {
-//   loginForm = this.fb.group({
-//     email: ['', [Validators.required, Validators.email]],
-//     password: ['', Validators.required],
-//   });
-//
-//   constructor(
-//       private fb: FormBuilder,
-//       private authService: AuthService,
-//       private router: Router,
-//       private messageService: MessageService
-//   ) {}
-//
-//   get email() {
-//     return this.loginForm.controls['email'];
-//   }
-//
-//   get password() {
-//     return this.loginForm.controls['password'];
-//   }
-//
-//   // loginUser() {
-//   //   const { email, password } = this.loginForm.value;
-//   //   this.authService.signInWithEmailAndPassword(email as string, password as string).subscribe(
-//   //       () => {
-//   //         sessionStorage.setItem('email', email as string);
-//   //         this.router.navigate(['/home']);
-//   //       },
-//   //       (error) => {
-//   //         this.messageService.add({
-//   //           severity: 'error',
-//   //           summary: 'Error',
-//   //           detail: 'Email or password is incorrect',
-//   //         });
-//   //         console.error(error);
-//   //       }
-//   //   );
-//   // }
-// }
-
-
-
 
 export class LoginPageComponent {
   loginForm = this.fb.group({
@@ -90,26 +48,29 @@ export class LoginPageComponent {
   }
 
   loginUser() {
-    const {email, password} = this.loginForm.value;
-    this.authService.getUserByEmail(email as string).subscribe(response => {
-      if (response.length > 0 && response[0].password === password) {
-        sessionStorage.setItem('email', email as string);
-        this.router.navigate(['/home']);
-      } else {
-        if (response.length === 0) {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Sorry we could not find your account',
-          });
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Email or password is incorrect',
-          });
-        }
-      }
-    });
+    const userData = { ...this.loginForm.value };
+    this.authService.signInWithEmailAndPassword(userData.email as string, userData.password as string)
+        .subscribe(
+            async () => {
+              // User successfully signed in
+              sessionStorage.setItem('email', userData.email as string);
+              await this.router.navigate(['/home']);
+            },
+            (error) => {
+              if (error.code === 'auth/invalid-credential') {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'Sorry we could not find your account. Email or password may be incorrect',
+                })
+              } else {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'Something went wrong',
+                });
+              }
+            }
+        );
   }
 }
