@@ -13,24 +13,24 @@ import {NewPostComponent} from "../new-post/new-post.component";
 import { User, Auth, user } from '@angular/fire/auth';
 import { IPost } from "../../interfaces/post.interface";
 
-import {
-  collection,
-  collectionChanges,
-  addDoc,
-  doc,
-  getDoc,
-  updateDoc,
-  setDoc,
-  deleteDoc,
-  getFirestore,
-  orderBy,
-  query,
-  CollectionReference,
-  DocumentChange,
-} from '@angular/fire/firestore';
+// import {
+//   collection,
+//   collectionChanges,
+//   addDoc,
+//   doc,
+//   getDoc,
+//   updateDoc,
+//   setDoc,
+//   deleteDoc,
+//   getFirestore,
+//   orderBy,
+//   query,
+//   CollectionReference,
+//   DocumentChange,
+// } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { take } from 'rxjs/operators';
-import {async} from "rxjs";
+// import { take } from 'rxjs/operators';
+// import {async} from "rxjs";
 import {PostsComponent} from "../posts/posts.component";
 
 
@@ -58,7 +58,7 @@ export class HomeComponent implements AfterViewInit {
     auth: Auth
   ) {
     this.user$ = user(auth);
-    this.getPosts();
+    // this.getPosts();
   }
   logOut() {
     sessionStorage.clear();
@@ -75,103 +75,102 @@ export class HomeComponent implements AfterViewInit {
 
 
 
-  async getPosts() {
-    const user = await this.getUser();
-    collectionChanges<IPost>(
-      query<IPost>(
-        collection(getFirestore(), 'posts') as CollectionReference<IPost>,
-        orderBy('createdAt', 'desc')
-      )
-    ).subscribe((posts) => {
-      console.log(posts);
-      posts.map((snapshot) => {
-        this.onPostSnapshot(snapshot, user);
-      });
-    });
-  }
+  // async getPosts() {
+  //   const user = await this.getUser();
+  //   const postsCollection = collection(getFirestore(), 'posts') as CollectionReference<IPost>;
+  //
+  //   const postsQuery = query(postsCollection, orderBy('createdAt', 'desc'));
+  //
+  //   collectionChanges<IPost>(postsQuery).subscribe((posts) => {
+  //     console.log(posts);
+  //     posts.map((snapshot) => {
+  //       this.onPostSnapshot(snapshot, user);
+  //     });
+  //   });
+  // }
+  //
+  // onPostSnapshot(change: DocumentChange<IPost>, user: User | null) {
+  //   const data = change.doc.data() as IPost;
+  //   switch (change.type) {
+  //     case 'added':
+  //       const post = {
+  //         ...data,
+  //         id: change.doc.id,
+  //         liked: !!user && !!data.likedBy.includes(user.uid),
+  //       };
+  //       this.allPosts.splice(change.newIndex, 0, post);
+  //       break;
+  //     case 'removed':
+  //       this.allPosts.splice(change.oldIndex, 1);
+  //       break;
+  //     case 'modified':
+  //       if (change.newIndex === change.oldIndex) {
+  //         this.allPosts[change.oldIndex] = {
+  //           ...data,
+  //           id: change.doc.id,
+  //           liked: !!user && !!data.likedBy.includes(user.uid),
+  //         };
+  //       } else {
+  //         this.allPosts.splice(change.oldIndex, 1);
+  //         this.allPosts.splice(change.newIndex, 0, {
+  //           ...data,
+  //           id: change.doc.id,
+  //           liked: !!user && !!data.likedBy.includes(user.uid),
+  //         });
+  //       }
+  //       break;
+  //   }
+  // }
 
-  onPostSnapshot(change: DocumentChange<IPost>, user: User | null) {
-    const data = change.doc.data() as IPost;
-    switch (change.type) {
-      case 'added':
-        const post = {
-          ...data,
-          id: change.doc.id,
-          liked: !!user && !!data.likedBy.includes(user.uid),
-        };
-        this.allPosts.splice(change.newIndex, 0, post);
-        break;
-      case 'removed':
-        this.allPosts.splice(change.oldIndex, 1);
-        break;
-      case 'modified':
-        if (change.newIndex === change.oldIndex) {
-          this.allPosts[change.oldIndex] = {
-            ...data,
-            id: change.doc.id,
-            liked: !!user && !!data.likedBy.includes(user.uid),
-          };
-        } else {
-          this.allPosts.splice(change.oldIndex, 1);
-          this.allPosts.splice(change.newIndex, 0, {
-            ...data,
-            id: change.doc.id,
-            liked: !!user && !!data.likedBy.includes(user.uid),
-          });
-        }
-        break;
-    }
-  }
+  // async getUser(): Promise<User | null> {
+  //   const user = await this.user$.pipe(take(1)).toPromise();
+  //   return user || null;
+  // }
+  //
+  // addNewPost(newPost: Omit<IPost, 'id'>) {
+  //   addDoc(collection(getFirestore(), 'posts'), newPost);
+  // }
+  //
+  // async onPostLike(post: IPost) {
+  //   const user = await this.getUser();
+  //   if (!user) {
+  //     return;
+  //   }
+  //   const likeDocRef = doc(
+  //     getFirestore(),
+  //     `posts/${post.id}/likes/${user.uid}`
+  //   );
+  //   const document = await getDoc(likeDocRef);
+  //   const docExists = document.exists();
+  //   if (docExists) {
+  //     post.likedBy = post.likedBy.filter((id) => id !== user.uid);
+  //     post.liked = false;
+  //     await deleteDoc(likeDocRef);
+  //   } else {
+  //     post.likedBy.push(user.uid);
+  //     post.liked = true;
+  //     await setDoc(likeDocRef, {
+  //       id: user.uid,
+  //       displayName: user.displayName,
+  //       photoURL: user.photoURL,
+  //     });
+  //   }
+  //   const docRef = doc(getFirestore(), `posts/${post.id}`);
+  //   const { liked, commented, ...updatedPost } = post;
+  //   updateDoc(docRef, {
+  //     ...updatedPost,
+  //   });
+  // }
 
-  async getUser(): Promise<User | null> {
-    const user = await this.user$.pipe(take(1)).toPromise();
-    return user || null;
-  }
-
-  addNewPost(newPost: Omit<IPost, 'id'>) {
-    addDoc(collection(getFirestore(), 'posts'), newPost);
-  }
-
-  async onPostLike(post: IPost) {
-    const user = await this.getUser();
-    if (!user) {
-      return;
-    }
-    const likeDocRef = doc(
-      getFirestore(),
-      `posts/${post.id}/likes/${user.uid}`
-    );
-    const document = await getDoc(likeDocRef);
-    const docExists = document.exists();
-    if (docExists) {
-      post.likedBy = post.likedBy.filter((id) => id !== user.uid);
-      post.liked = false;
-      await deleteDoc(likeDocRef);
-    } else {
-      post.likedBy.push(user.uid);
-      post.liked = true;
-      await setDoc(likeDocRef, {
-        id: user.uid,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-      });
-    }
-    const docRef = doc(getFirestore(), `posts/${post.id}`);
-    const { liked, commented, ...updatedPost } = post;
-    updateDoc(docRef, {
-      ...updatedPost,
-    });
-  }
-
-  async onPostComment(event: { post: IPost; comment: string }) {
-    const { post, comment } = event;
-    if (post.commentedBy.length === 0) {
-      post.commentedBy.push(Date.now().toString());
-    } else {
-      post.commentedBy.length = 0;
-    }
-    console.log(post);
-  }
+  // async onPostComment(event: { post: IPost; comment: string }) {
+  //   const { post, comment } = event;
+  //   if (post.commentedBy.length === 0) {
+  //     post.commentedBy.push(Date.now().toString());
+  //   } else {
+  //     post.commentedBy.length = 0;
+  //   }
+  //   console.log(post);
+  // }
 
 
 
@@ -208,9 +207,4 @@ export class HomeComponent implements AfterViewInit {
       }
     })
   }
-
-  protected readonly async = async;
-  protected readonly async = async;
-  protected readonly async = async;
-  protected readonly async = async;
 }

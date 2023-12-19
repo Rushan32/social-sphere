@@ -1,21 +1,47 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/auth';
-import { Observable } from 'rxjs';
+import {from, Observable} from 'rxjs';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+// import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
 })
+
+// export class AuthService {
+//   private baseUrl = 'http://localhost:3000';
+//
+//   constructor(private http: HttpClient) {}
+//
+//   registerUser(userDetails: User) {
+//     return this.http.post(`${this.baseUrl}/users`, userDetails);
+//   }
+//
+//   getUserByEmail(email: string): Observable<User[]> {
+//     return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
+//   }
+// }
+
 export class AuthService {
-  private baseUrl = 'http://localhost:3000';
+  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
 
-  constructor(private http: HttpClient) {}
-
-  registerUser(userDetails: User) {
-    return this.http.post(`${this.baseUrl}/users`, userDetails);
+  registerUser(email: string, password:string) {
+    return from(
+        this.afAuth.createUserWithEmailAndPassword(
+            email,
+            password
+        )
+    );
   }
 
   getUserByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
+    return this.firestore
+        .collection<User>('users', (ref) => ref.where('email', '==', email))
+        .valueChanges();
+  }
+
+  signInWithEmailAndPassword(email: string, password: string) {
+    return from(this.afAuth.signInWithEmailAndPassword(email, password));
   }
 }
