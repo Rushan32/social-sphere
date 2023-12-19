@@ -1,0 +1,39 @@
+<!--<div class="post flex" *ngIf="post">-->
+<!--  <div class="w-[36px] mr-[12px]">-->
+<!--    <img-->
+<!--      class="inline-block rounded-full shadow-lg w-full h-[36px]"-->
+<!--      src="{{post.by.profileURL}}"-->
+<!--    />-->
+<!--  </div>-->
+<!--  <div class="flex-1">-->
+<!--    <div class="flex">-->
+<!--      &lt;!&ndash; username &ndash;&gt;-->
+<!--      <div class="post__username">-->
+<!--        <a href="https://twitter.com/{{post.by.username}}">-->
+<!--          <span class="font-semibold">{{post.by.name}}</span>-->
+<!--          <span class="ml-1 mr-1" *ngIf="post.by.username">@{{post.by.username}}</span>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      <div class="post__time-ago">. {{postCreatedAt}}</div>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      &lt;!&ndash; message &ndash;&gt;-->
+<!--      {{post.content}}-->
+<!--    </div>-->
+<!--    <div class="flex justify-center">-->
+<!--      &lt;!&ndash; actions &ndash;&gt;-->
+<!--      <div [class.text-red-500]="post.liked" class="post__action-item transition-all post__action-item&#45;&#45;like mr-10 cursor-pointer hover:text-red-500 flex items-center" (click)="postLiked.emit(post)">-->
+<!--        <span class="post__action-item__icon w-4 h-4 flex justify-center items-center relative bottom-[2px]">-->
+<!--          <i class="{{post.liked ? 'fas' : 'far' }} fa-heart"></i>-->
+<!--        </span>-->
+<!--        <span>{{post.likedBy.length}}</span>-->
+<!--      </div>-->
+<!--      <div class="post__action-item  transition-all post__action-item&#45;&#45;comment mr-10 cursor-pointer hover:text-blue-500 flex items-center"  (click)="commentOnPost()">-->
+<!--        <span class="post__action-item__icon w-4 h-4 flex justify-center items-center relative bottom-[2px]">-->
+<!--          <i class="far fa-comment"></i>-->
+<!--        </span>-->
+<!--        <span>{{post.commentedBy.length}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
