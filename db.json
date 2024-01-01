@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "fullName": "test",
+      "email": "test1@gmail.com",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "fullName": "test2",
+      "email": "test2@yahoo.com",
+      "password": "321",
+      "id": 2
+    },
+    {
+      "fullName": "test",
+      "email": "test1@gmail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "fullName": "another test",
+      "email": "anothertest@hotmail.com",
+      "password": "test",
+      "id": 4
+    },
+    {
+      "fullName": "test 3",
+      "email": "hello@y7mail.com",
+      "password": "hi",
+      "id": 5
+    },
+    {
+      "fullName": "joke",
+      "email": "joke@joke",
+      "password": "joke",
+      "id": 6
+    },
+    {
+      "fullName": "jokes",
+      "email": "jokes@jokes",
+      "password": "jokes",
+      "id": 7
+    },
+    {
+      "fullName": "Rushan",
+      "email": "rushan123@mailinator.com",
+      "password": "32",
+      "id": 8
+    },
+    {
+      "fullName": "lmao",
+      "email": "lmao@funny.com",
+      "password": "ha",
+      "id": 9
+    },
+    {
+      "fullName": "lkasnf",
+      "email": "hello@kotlin",
+      "password": "bnm",
+      "id": 10
+    },
+    {
+      "fullName": "justin",
+      "email": "justin@joke",
+      "password": "jj",
+      "id": 11
+    }
+  ]
+}

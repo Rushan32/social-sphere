@@ -1,0 +1,55 @@
+<div class="navbar">
+  <div class="top">
+    <img
+      src="../../../assets/Satellite.png"
+      alt="Satellite Image"
+      class="satellite-image" />
+    <h2>Social<br>Sphere</h2>
+  </div>
+  <div class="user" *ngIf="user$ | async as user">
+    <img
+      [src]="user.photoURL ?? 'assets/placeholder.png'"
+      alt="Profile Picture"
+      class="profile-picture" />
+    <h4 class="name">Welcome User</h4>
+    <p class="mail">{{ user?.email }}</p>
+  </div>
+  <div class="menu-items">
+    <button class="menu-button" [routerLink]="['/home']">
+      <img src="assets/house-icon.png"
+           alt="searching"
+           class="menu-icons">
+      <span>Home</span>
+    </button>
+    <button class="menu-button">
+      <img src="assets/search-icon.png"
+           alt="searching"
+           class="menu-icons">
+      <span>Search</span>
+    </button>
+    <button class="menu-button" [routerLink]="['/create-post']">
+      <img src="assets/post-icon.png"
+           alt="posting"
+           class="menu-icons">
+      <span>Post</span>
+    </button>
+    <button class="menu-button" [routerLink]="['/saved']">
+      <img src="assets/bookmark-icon.png"
+           alt="saved"
+           class="menu-icons">
+      <span>Saved</span>
+    </button>
+    <button class="menu-button" [routerLink]="['/profile']">
+      <img src="assets/profile-icon.png"
+           alt="profile"
+           class="menu-icons">
+      <span>Profile</span>
+    </button>
+    <button class="menu-button" [routerLink]="['/settings']">
+      <img src="assets/settings-icon.png"
+           alt="settings"
+           class="menu-icons">
+      <span>Settings</span>
+    </button>
+  </div>
+</div>
