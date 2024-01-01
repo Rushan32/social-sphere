@@ -6,9 +6,7 @@ import {
 } from "@angular/fire/compat/firestore";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';  // Import the map operator
-
 import { Post } from "../components/post";
-import {formatDate} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'

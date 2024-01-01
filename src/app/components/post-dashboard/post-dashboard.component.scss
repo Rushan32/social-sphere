@@ -24,3 +24,16 @@ mat-sidenav-content {
   height: 100vh;
   background-color: darkolivegreen;
 }
+
+.create-post {
+  text-align: center;
+  width: 100%;
+}
+
+.display-image {
+  max-width: 25%; /* Make the image responsive */
+  max-height: 25%; /* Make the image responsive */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Adjust to cover the container without stretching */
+}

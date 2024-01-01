@@ -17,7 +17,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './post-list.component.scss'
 })
 export class PostListComponent implements OnInit{
-  posts: Observable<Post[]> | undefined
+  posts?: Observable<Post[]>
   constructor(private postService: PostServiceService) {
   }
 

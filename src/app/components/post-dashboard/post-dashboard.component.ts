@@ -9,6 +9,9 @@ import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
 import {PostListComponent} from "../post-list/post-list.component";
 import {SidebarComponent} from "../sidebar/sidebar.component";
 import {BreakpointObserver} from "@angular/cdk/layout";
+import {RouterLink} from "@angular/router";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-post-dashboard',
@@ -22,6 +25,7 @@ import {BreakpointObserver} from "@angular/cdk/layout";
     MatSidenavModule,
     PostListComponent,
     SidebarComponent,
+    RouterLink,
   ],
   templateUrl: './post-dashboard.component.html',
   styleUrl: './post-dashboard.component.scss',
@@ -30,8 +34,11 @@ export class PostDashboardComponent implements AfterViewInit {
   title: string | undefined;
   image: string | undefined;
   content: string | undefined;
-  constructor(private auth: AuthService, private postService: PostServiceService, private observer: BreakpointObserver) {
-  }
+  constructor(private auth: AuthService,
+              private postService: PostServiceService,
+              private observer: BreakpointObserver,
+              private storage: AngularFireStorage
+  ) {}
 
   createPost() {
     const data = {
@@ -44,6 +51,34 @@ export class PostDashboardComponent implements AfterViewInit {
     };
     this.postService.create(data);
   }
+
+  uploadImage(event: any) {
+    const file: File | undefined = event?.target?.files?.[0];
+
+    if (!file) {
+      return alert('No file selected');
+    }
+
+    const path = `posts/${file.name}`;
+
+    if (file.type.split('/')[0] !== 'image') {
+      return alert('Only Image Files');
+    } else {
+      const task = this.storage.upload(path, file);
+
+      // Get notified when the download URL is available
+      task.snapshotChanges().subscribe((snapshot) => {
+        if (snapshot?.state === 'success') {
+          // Get the download URL
+          this.storage.ref(path).getDownloadURL().subscribe((url) => {
+            this.image = url;
+          });
+        }
+      });
+    }
+  }
+
+
 
   @ViewChild(MatSidenav)
   sidenav!:MatSidenav;
