@@ -1,0 +1,25 @@
+<div class="dashboard-page">
+    <mat-sidenav-container class="sidebar-container">
+        <mat-sidenav #sidebar mode="side" opened class="sidebar">
+            <app-sidebar></app-sidebar>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+            <div class="create-post">
+                <div class="upload-image">
+                    <input type="file" name="file" id="file" (change)="uploadImage($event)">
+                    <div class="display-for-image" [hidden]="!image">
+                        <img [src]="image || '//:0'" alt="display-image" class="display-image">
+                    </div>
+                </div>
+                <mat-form-field>
+                    <input matInput placeholder="Post Title" [(ngModel)]="title">
+                </mat-form-field> <br>
+                <mat-form-field>
+                    <input matInput placeholder="Post Content" [(ngModel)]="content">
+                </mat-form-field> <br>
+                <button mat-raised-button color="accent" (click)="createPost()" [disabled]="!title || !content" [routerLink]="['/home']">Create Post</button>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

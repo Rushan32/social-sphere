@@ -1,0 +1,39 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set to 100% of the viewport height */
+  color: red;
+}
+
+/* Add any additional styling as needed */
+h1 {
+  font-size: 2rem; /* Adjust font size */
+  margin-bottom: 20px; /* Add margin as needed */
+}
+
+.sidebar {
+  background-color: black;
+  color: white;
+  width: 230px;
+  height: 100%;
+}
+
+mat-sidenav-content {
+  height: 100vh;
+  background-color: darkolivegreen;
+}
+
+.create-post {
+  text-align: center;
+  width: 100%;
+}
+
+.display-image {
+  max-width: 25%; /* Make the image responsive */
+  max-height: 25%; /* Make the image responsive */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Adjust to cover the container without stretching */
+}
