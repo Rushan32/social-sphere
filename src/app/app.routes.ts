@@ -50,7 +50,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'dashboard',
+    path: 'create-post',
     component: PostDashboardComponent,
     canActivate: [authGuard],
   },

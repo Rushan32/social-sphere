@@ -10,7 +10,18 @@ import firebase from "firebase/compat";
 })
 
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
+    authState: any = null;
+  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+      this.afAuth.authState.subscribe(data => this.authState = data)
+  }
+
+  get authenticated() {
+      return this.authState !== null;
+  }
+
+  get currentUserId() {
+      return this.authenticated ? this.authState.uid : null;
+  }
 
   currentUser$ = this.afAuth.authState;
   registerUser(email: string, password:string) {

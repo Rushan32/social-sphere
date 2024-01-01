@@ -5,9 +5,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
-      <div *ngIf="dashboardActivate">
-        <app-post-dashboard></app-post-dashboard>
-      </div>
+        <app-post-list></app-post-list>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

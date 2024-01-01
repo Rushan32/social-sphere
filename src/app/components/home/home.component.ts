@@ -10,23 +10,25 @@ import {PostsComponent} from "../posts/posts.component";
 import {HeaderComponent} from "../header/header.component";
 import {NgIf} from "@angular/common";
 import {PostDashboardComponent} from "../post-dashboard/post-dashboard.component";
+import {PostListComponent} from "../post-list/post-list.component";
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    ButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    SidebarComponent,
-    NewPostComponent,
-    PostsComponent,
-    HeaderComponent,
-    NgIf,
-    PostDashboardComponent,
-  ],
+    imports: [
+        ButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        SidebarComponent,
+        NewPostComponent,
+        PostsComponent,
+        HeaderComponent,
+        NgIf,
+        PostDashboardComponent,
+        PostListComponent,
+    ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -35,8 +37,6 @@ export class HomeComponent implements AfterViewInit {
     private observer: BreakpointObserver
   ) {
   }
-
-  dashboardActivate: boolean = false;
 
   @ViewChild(MatSidenav)
   sidenav!:MatSidenav;
