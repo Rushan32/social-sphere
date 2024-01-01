@@ -6,12 +6,12 @@
       class="satellite-image" />
     <h2>Social<br>Sphere</h2>
   </div>
-  <div class="user">
+  <div class="user" *ngIf="user$ | async as user">
     <img
-      src="../../../assets/placeholder.png"
+      [src]="user.photoURL ?? 'assets/placeholder.png'"
       alt="Profile Picture"
       class="profile-picture" />
-    <h4 class="name">{{ user?.fullName }}</h4>
+    <h4 class="name">Welcome User</h4>
     <p class="mail">{{ user?.email }}</p>
   </div>
   <div class="menu-items">
@@ -21,7 +21,7 @@
            class="menu-icons">
       <span>Search</span>
     </button>
-    <button class="menu-button">
+    <button class="menu-button" (click)="showDashboard()">
       <img src="assets/post-icon.png"
            alt="posting"
            class="menu-icons">

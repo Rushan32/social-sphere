@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Social Sphere</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="showDashboard()">Write a Post</button>
+    <p-button label="Sign Out" (onClick)="logOut()"></p-button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div *ngIf="dashboardActivate">
+  <app-post-dashboard></app-post-dashboard>
+</div>

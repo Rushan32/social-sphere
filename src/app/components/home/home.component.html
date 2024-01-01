@@ -5,13 +5,9 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
-<!--      <ng-container *ngIf="user$ | async as user">-->
-        <app-new-post></app-new-post>
-<!--        <app-posts (postLiked)="onPostLike($event)" (postCommented)="onPostComment($event)" *ngFor="let post of allPosts;" [post]="post"></app-posts>-->
-<!--      </ng-container>-->
+      <div *ngIf="dashboardActivate">
+        <app-post-dashboard></app-post-dashboard>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <div class="main">
-    <p-button label="Sign Out" (onClick)="logOut()"></p-button>
-  </div>
 </div>

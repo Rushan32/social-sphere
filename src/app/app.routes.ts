@@ -6,6 +6,9 @@ import { authGuard } from './guards/auth.guard';
 import {SavedPageComponent} from "./components/saved-page/saved-page.component";
 import {ProfilePageComponent} from "./components/profile-page/profile-page.component";
 import {SettingsPageComponent} from "./components/settings-page/settings-page.component";
+import {PostListComponent} from "./components/post-list/post-list.component";
+import {PostDetailComponent} from "./components/post-detail/post-detail.component";
+import {PostDashboardComponent} from "./components/post-dashboard/post-dashboard.component";
 
 export const routes: Routes = [
   {
@@ -34,6 +37,21 @@ export const routes: Routes = [
   {
     path: 'settings',
     component: SettingsPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'blog',
+    component: PostListComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'blog/:id',
+    component: PostDetailComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard',
+    component: PostDashboardComponent,
     canActivate: [authGuard],
   },
   {
