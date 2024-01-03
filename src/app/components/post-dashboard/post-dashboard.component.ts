@@ -11,7 +11,6 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {RouterLink} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-post-dashboard',

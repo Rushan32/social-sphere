@@ -1,4 +1,20 @@
-<div *ngFor="let post of posts | async">
-    <h2 routerLink="{{post.id}}">{{post.title}}</h2>
-    <p>{{post.content}}</p>
-</div>
+<section>
+    <mat-card *ngFor="let post of posts | async" class="card">
+        <a [routerLink]="['/post', post.id]">
+            <mat-card>
+                <div class="content">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{post.content}}</p>
+                </div>
+                <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
+                <p><small>Posted by {{ post.author }} &bull; On {{ post.published }}</small></p>
+
+<!--                <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">-->
+<!--                    <button mat-icon-button (click)="delete(post.id)">-->
+<!--                        <mat-icon>delete</mat-icon>-->
+<!--                    </button>-->
+<!--                </mat-card-actions>-->
+            </mat-card>
+        </a>
+    </mat-card>
+</section>
