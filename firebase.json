@@ -4,7 +4,6 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site": "social-sphere",
     "public": "public",
     "ignore": [
       "firebase.json",
