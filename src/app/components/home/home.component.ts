@@ -6,8 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {NewPostComponent} from "../new-post/new-post.component";
-import {PostsComponent} from "../posts/posts.component";
-import {HeaderComponent} from "../header/header.component";
 import {NgIf} from "@angular/common";
 import {PostDashboardComponent} from "../post-dashboard/post-dashboard.component";
 import {PostListComponent} from "../post-list/post-list.component";
@@ -23,8 +21,6 @@ import {PostListComponent} from "../post-list/post-list.component";
         MatIconModule,
         SidebarComponent,
         NewPostComponent,
-        PostsComponent,
-        HeaderComponent,
         NgIf,
         PostDashboardComponent,
         PostListComponent,
