@@ -37,3 +37,8 @@ mat-sidenav-content {
   height: auto; /* Maintain aspect ratio */
   object-fit: contain; /* Adjust to cover the container without stretching */
 }
+
+mat-icon {
+  color: white;
+  transform: scale(2);
+}

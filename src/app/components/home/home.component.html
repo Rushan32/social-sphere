@@ -4,8 +4,12 @@
       <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+      <div class="menu-icon">
+        <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+      </div>
+      <div class="timeline">
         <app-post-list></app-post-list>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

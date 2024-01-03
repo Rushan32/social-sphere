@@ -1,5 +1,27 @@
-<p>post-detail works!</p>
-<div *ngIf="post">
-    <h3> {{post.title}} </h3>
-    <p>posted by {{post.author}} &bull; {{post.published | date: 'fullDate'}}</p>
+<div class="detail-page">
+    <mat-sidenav-container class="sidebar-container">
+        <mat-sidenav #sidebar mode="side" opened class="sidebar">
+            <app-sidebar></app-sidebar>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-icon (click)="sidebar.toggle()" class="burger">menu</mat-icon>
+            <section>
+                <mat-card class="card">
+                    <mat-card *ngIf="post">
+                        <div class="content">
+                            <h2>{{ post.title }}</h2>
+                            <p>{{post.content}}</p>
+                        </div>
+                        <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
+                        <p><small>Posted by {{ post.author }} &bull; On {{ post.published }}</small></p>
+                        <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
+                            <button mat-icon-button (click)="delete()">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </mat-card>
+            </section>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
