@@ -3,7 +3,8 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": {
+  "hosting": [ {
+    "target": "social-sphere",
     "public": "dist/social-sphere/browser",
     "ignore": [
       "firebase.json",
@@ -16,5 +17,21 @@
         "destination": "/index.html"
       }
     ]
-  }
+  },
+    {
+      "target": "social-sphere-dev",
+      "public": "dist/social-sphere/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+    ]
 }

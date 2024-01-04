@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "social-sphere-3a3ce"
-  }
+  },
+  "targets": {
+    "social-sphere-3a3ce": {
+      "hosting": {
+        "social-sphere": [
+          "social-sphere"
+        ],
+        "social-sphere-dev": [
+          "social-sphere-3a3ce"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
