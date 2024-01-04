@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   firebaseConfig : {
     apiKey: "AIzaSyCIYoprKsmBCePhmZqdzUdva_p6k9U20Jw",
-    authDomain: "social-sphere.web.app",
+    authDomain: "social-sphere.firebaseapp.com",
     projectId: "social-sphere-3a3ce",
     storageBucket: "social-sphere-3a3ce.appspot.com",
     messagingSenderId: "510726005240",
