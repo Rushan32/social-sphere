@@ -22,23 +22,110 @@ h1 {
 
 mat-sidenav-content {
   height: 100vh;
-  background-color: darkolivegreen;
-}
-
-.create-post {
-  text-align: center;
-  width: 100%;
-}
-
-.display-image {
-  max-width: 25%; /* Make the image responsive */
-  max-height: 25%; /* Make the image responsive */
-  width: auto; /* Maintain aspect ratio */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Adjust to cover the container without stretching */
+  background-color: black;
 }
 
 mat-icon {
   color: white;
   transform: scale(2);
+}
+
+
+.create-post {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+
+    // Style for the label
+    mat-form-field-label {
+      color: #1da1f2; // Twitter blue
+      font-size: 16px;
+      transform: translateY(-12px); // Move the label up a bit
+    }
+
+    // Style for the underline when focused
+    mat-form-field-underline {
+      &.mat-focused {
+        mat-form-field-ripple {
+          background-color: #1da1f2; // Twitter blue
+        }
+      }
+    }
+
+    // Style for the input text
+    input {
+      font-size: 16px;
+      color: #333; // Text color
+      background-color: #f5f8fa; // Twitter background color
+      border: 1px solid #1da1f2; // Twitter blue border
+      border-radius: 4px;
+      padding: 8px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .upload-image {
+    position: relative;
+
+    .upload-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #ccc;
+      border-radius: 4px;
+      padding: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      .upload-label {
+        color: #555;
+        font-size: 14px;
+        margin-right: 8px;
+      }
+
+      .upload {
+        display: none;
+      }
+    }
+
+    .display-for-image {
+      margin-top: 16px;
+      margin-bottom: 16px;
+
+      img {
+        max-width: 100%;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0d86c7;
+    }
+
+    &:disabled {
+      background-color: #b0d4f1;
+      cursor: not-allowed;
+    }
+  }
 }
