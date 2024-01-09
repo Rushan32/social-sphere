@@ -13,7 +13,7 @@
                             <p>{{post.content}}</p>
                         </div>
                         <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
-                        <p><small>Posted by {{ post.author }} &bull; On {{ post.published }}</small></p>
+                        <p><small>Posted by {{ post.author }} &bull; On {{ post.published }} This isn't working </small></p>
                         <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
                             <button mat-icon-button (click)="delete()">
                                 <mat-icon>delete</mat-icon>

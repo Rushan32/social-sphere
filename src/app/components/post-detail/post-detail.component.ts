@@ -47,7 +47,14 @@ export class PostDetailComponent implements OnInit, AfterViewInit {
 
     getPost(): void {
         const id = this.route.snapshot.paramMap.get('id')
-        this.postService.getPostData(id as string).subscribe(post => (this.post = post))
+        this.postService.getPostData(id as string).subscribe(post => (this.post = this.convertPost(post as Post)))
+    }
+
+    convertPost(post: Post) {
+      return {
+          ...post,
+          // published: new Date(post.published)
+      }
     }
 
     async delete() {
