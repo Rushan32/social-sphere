@@ -62,7 +62,6 @@ export class PostDetailComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   newComment: string = '';
 
   addComment() {
@@ -71,7 +70,9 @@ export class PostDetailComponent implements OnInit, AfterViewInit {
         postId: this.route.snapshot.paramMap.get('id') || 'Unknown PostId',
         content: this.newComment,
         author: this.auth.currentUserId || 'Unknown AuthorId',
+        authorEmail: this.auth.authState.email || 'Unknown User',
         createdAt: new Date(),
+        authorImage: this.auth.authState.photoURL
       };
 
       this.commentService.addComment(comment).then(() => {
@@ -82,7 +83,6 @@ export class PostDetailComponent implements OnInit, AfterViewInit {
         console.error('Error adding comment:', error);
       });
   }
-
 
 
     getPost(): void {

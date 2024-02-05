@@ -58,3 +58,15 @@ p {
 a {
   text-decoration: none;
 }
+
+img.profile-picture {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  border-radius: 50%; /* Make it round */
+  margin-right: 10px; /* Add some spacing between the picture and text */
+}
+
+p small {
+  display: flex;
+  align-items: center; /* Align the text and picture vertically */
+}

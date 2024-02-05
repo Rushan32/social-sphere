@@ -13,7 +13,7 @@
                             <p>{{post.content}}</p>
                         </div>
                         <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
-                        <p><small>Posted by {{ post.author }} &bull; On {{ post.published }} This isn't working </small></p>
+                        <p><small> <img width="120" height="120" alt="profile-picture" class="profile-picture" *ngIf="post.authorImage" src="{{post.authorImage}}" /> <br>{{ post.author }}</small></p>
                         <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
                             <button mat-icon-button (click)="delete()">
                                 <mat-icon>delete</mat-icon>
@@ -34,7 +34,10 @@
                 <h3>Comments</h3>
                   <mat-card *ngFor="let comment of comments" class="comment">
                     <div class="comment-content">
-                      <small style="color: #1da1f2">By {{ comment.author }}</small>
+                      <small style="color: #1da1f2; display: flex; align-items: center;">
+                        <img width="40" height="40" alt="profile-picture" class="profile-picture" *ngIf="comment.authorImage" src="{{comment.authorImage}}"/>
+                        <span><br>{{ comment.authorEmail }}</span>
+                      </small>
                       <p style="font-size: 15px">{{ comment.content }}</p>
                     </div>
                   </mat-card>

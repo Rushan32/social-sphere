@@ -43,6 +43,7 @@ export class PostDashboardComponent implements AfterViewInit {
     const data = {
       author: this.auth.authState.displayName || this.auth.authState.email || 'Unknown Author',
       authorId: this.auth.currentUserId || 'Unknown AuthorId',
+      authorImage: this.auth.authState.photoURL,
       content: this.content || '',
       image: this.image || '',
       published: new Date(),

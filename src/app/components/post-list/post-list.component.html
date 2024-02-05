@@ -7,7 +7,7 @@
                     <p>{{post.content}}</p>
                 </div>
                 <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
-                <p><small>Posted by {{ post.author }} &bull; On {{ post.published }}</small></p>
+                <p><small> <img width="120" height="120" alt="profile-picture" class="profile-picture" *ngIf="post.authorImage" src="{{post.authorImage}}" /> <br>{{ post.author }}</small></p>
             </mat-card>
         </a>
     </mat-card>

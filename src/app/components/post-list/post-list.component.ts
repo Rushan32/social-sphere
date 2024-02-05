@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {AuthService} from "../../services/auth.service";
+import {user} from "@angular/fire/auth";
 
 
 @Component({
@@ -27,17 +28,13 @@ import {AuthService} from "../../services/auth.service";
   styleUrl: './post-list.component.scss'
 })
 export class PostListComponent implements OnInit{
-
+  user$ = this.auth.currentUser$;
   posts?: Observable<Post[]>
   constructor(private postService: PostServiceService, public auth: AuthService) {
   }
 
   ngOnInit() {
     this.posts = this.postService.getPosts()
-  }
-
-  async delete(id: string | undefined) {
-    await this.postService.delete(id as string);
   }
 
 }

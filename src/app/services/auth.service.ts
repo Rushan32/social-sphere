@@ -10,9 +10,11 @@ import firebase from "firebase/compat";
 })
 
 export class AuthService {
-    authState: any = null;
+  authState: any = null;
+  currentEmail: string | null = null; // New property to store the user's email
+
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
-      this.afAuth.authState.subscribe(data => this.authState = data)
+    this.afAuth.authState.subscribe(data => {this.authState = data});
   }
 
   get authenticated() {
@@ -42,6 +44,8 @@ export class AuthService {
   signInWithEmailAndPassword(email: string, password: string) {
     return from(this.afAuth.signInWithEmailAndPassword(email, password));
   }
+
+
 
 
   updateProfileData(profileData: Partial<firebase.UserInfo>): Observable<any> {
