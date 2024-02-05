@@ -8,12 +8,6 @@
                 </div>
                 <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
                 <p><small>Posted by {{ post.author }} &bull; On {{ post.published }}</small></p>
-
-<!--                <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">-->
-<!--                    <button mat-icon-button (click)="delete(post.id)">-->
-<!--                        <mat-icon>delete</mat-icon>-->
-<!--                    </button>-->
-<!--                </mat-card-actions>-->
             </mat-card>
         </a>
     </mat-card>

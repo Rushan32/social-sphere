@@ -13,6 +13,10 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MatCardModule} from "@angular/material/card";
 import {AuthService} from "../../services/auth.service";
+import {CommentServiceService} from "../../services/comment-service.service";
+import firebase from "firebase/compat";
+import firestore = firebase.firestore;
+import { Comment } from "../../interfaces/Comment";
 
 @Component({
   selector: 'app-post-detail',
@@ -33,17 +37,53 @@ import {AuthService} from "../../services/auth.service";
   styleUrl: './post-detail.component.scss'
 })
 export class PostDetailComponent implements OnInit, AfterViewInit {
-  post: Post | undefined
+  post: Post | undefined;
+  comments: Comment[] = [];
   constructor(private route: ActivatedRoute,
               private postService: PostServiceService,
               private observer: BreakpointObserver,
               public auth: AuthService,
-              private router: Router
+              private router: Router,
+              private commentService: CommentServiceService
   ) {}
 
   ngOnInit() {
     this.getPost();
+    this.getComments();
   }
+
+  getComments() {
+    const postId = this.route.snapshot.paramMap.get('id');
+    if (postId) {
+      this.commentService.getCommentsForPost(postId).subscribe((comments) => {
+        console.log('Retrieved comments:', comments);
+        this.comments = comments;
+      });
+    }
+  }
+
+
+  newComment: string = '';
+
+  addComment() {
+    console.log('Adding comment:', this.newComment);
+      const comment: Comment = {
+        postId: this.route.snapshot.paramMap.get('id') || 'Unknown PostId',
+        content: this.newComment,
+        author: this.auth.currentUserId || 'Unknown AuthorId',
+        createdAt: new Date(),
+      };
+
+      this.commentService.addComment(comment).then(() => {
+        console.log('Comment added successfully');
+        this.newComment = ''; // Clear the comment input
+        this.getComments(); // Refresh the comments list
+      }).catch(error => {
+        console.error('Error adding comment:', error);
+      });
+  }
+
+
 
     getPost(): void {
         const id = this.route.snapshot.paramMap.get('id')

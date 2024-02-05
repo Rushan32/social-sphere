@@ -70,3 +70,59 @@ p {
   color: white;
   font-size: 0.9rem;
 }
+
+.comments {
+  color: white;
+  max-width: 600px;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    max-width: 200px;
+  }
+}
+
+.comment {
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  word-wrap: break-word; /* Add this property to handle long words */
+}
+
+.add-comment {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f5f8fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 200px;
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column; /* Adjusted to column for better mobile layout */
+    align-items: center;
+
+    .comment-input {
+      width: 100%;
+      margin-bottom: 10px;
+
+      textarea {
+        resize: none;
+        width: 100%;
+      }
+    }
+
+    button {
+      background-color: #1da1f2;
+    }
+  }
+}

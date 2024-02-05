@@ -21,6 +21,24 @@
                         </mat-card-actions>
                     </mat-card>
                 </mat-card>
+              <div class="add-comment">
+                <h3>Add a Comment</h3>
+                <form (submit)="addComment()" class="comment-form">
+                  <mat-form-field appearance="fill" class="comment-input">
+                    <textarea matInput [(ngModel)]="newComment" name="newComment" placeholder="Write your comment..."></textarea>
+                  </mat-form-field>
+                  <button type="submit" mat-raised-button color="primary" [disabled]="!newComment">Post Comment</button>
+                </form>
+              </div>
+              <div class="comments">
+                <h3>Comments</h3>
+                  <mat-card *ngFor="let comment of comments" class="comment">
+                    <div class="comment-content">
+                      <small style="color: #1da1f2">By {{ comment.author }}</small>
+                      <p style="font-size: 15px">{{ comment.content }}</p>
+                    </div>
+                  </mat-card>
+              </div>
             </section>
         </mat-sidenav-content>
     </mat-sidenav-container>
