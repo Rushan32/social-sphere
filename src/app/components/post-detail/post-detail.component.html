@@ -13,7 +13,7 @@
                             <p>{{post.content}}</p>
                         </div>
                         <img *ngIf="post.image" src="{{ post.image }}" alt="{{ post.title }}">
-                        <p><small> <img width="120" height="120" alt="profile-picture" class="profile-picture" *ngIf="post.authorImage" src="{{post.authorImage}}" /> <br>{{ post.author }}</small></p>
+                        <p><small> <img width="120" height="120" alt="profile-picture" class="profile-picture" *ngIf="post.authorImage" src="{{post.authorImage}}" /> <br>{{ post.author.split('@')[0] }}</small></p>
                         <mat-card-actions align="end" *ngIf="auth.currentUserId === post.authorId">
                             <button mat-icon-button (click)="delete()">
                                 <mat-icon>delete</mat-icon>
